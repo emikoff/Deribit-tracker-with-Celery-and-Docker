@@ -130,7 +130,7 @@ def save_price(ticker: str, price: float, timestamp: int) -> None:
     Args:
         ticker (str): Символ актива.
         price (float): Значение цены.
-        timestamp (int): Время фиксации цены в миллисекундах.
+        timestamp (int): Время фиксации цены в микросекундах.
     """
 
     query = """

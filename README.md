@@ -43,18 +43,16 @@ docker-compose up -d --build
 # Список тикеров для мониторинга (через запятую)
 TICKERS=btc_usd,eth_usd
 
-# Параметры PostgreSQL
+# POSTGRES
 POSTGRES_DB=deribit
 POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
+POSTGRES_PASSWORD=your_password
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
 
-# Redis / Celery
+# REDIS / CELERY
 CELERY_BROKER_URL=redis://redis:6379/0
 CELERY_RESULT_BACKEND=redis://redis:6379/0
-
-TICKERS="btc_usd, eth_usd"
 
 ```
 

@@ -21,3 +21,4 @@ pytest.ini
 tempCodeRunnerFile.py
 tests/*
 app/_price.py
+.env.example
