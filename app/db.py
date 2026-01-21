@@ -1,5 +1,5 @@
 import time
-import os
+from app.config import settings
 import psycopg2
 
 
@@ -29,11 +29,11 @@ def get_db_connection(retries: int = 10, delay: int = 2):
     for attempt in range(retries):
         try:
             return psycopg2.connect(
-                dbname=os.getenv("POSTGRES_DB"),
-                user=os.getenv("POSTGRES_USER"),
-                password=os.getenv("POSTGRES_PASSWORD"),
-                host=os.getenv("POSTGRES_HOST"),
-                port=os.getenv("POSTGRES_PORT"),
+                dbname=settings.POSTGRES_DB,
+                user=settings.POSTGRES_USER,
+                password=settings.POSTGRES_PASSWORD,
+                host=settings.POSTGRES_HOST,
+                port=settings.POSTGRES_PORT,
             )
         except psycopg2.OperationalError:
             if attempt == retries - 1:
