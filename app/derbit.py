@@ -1,7 +1,7 @@
 import requests
 
 
-def get_index_price(symbol: str) -> float:
+def get_index_data(symbol: str) -> float:
     """
     Запрашивает текущую цену индекса через API Deribit.
 
@@ -17,20 +17,12 @@ def get_index_price(symbol: str) -> float:
     url = "https://www.deribit.com/api/v2/public/get_index_price"
     resp = requests.get(url, params={"index_name": symbol}, timeout=10)
     resp.raise_for_status()
-    return resp.json()["result"]["index_price"]
 
+    data = resp.json()
 
-def get_time() -> int:
-    """
-    Получает текущее серверное время Deribit.
+    result = {
+        "price": data["result"]["index_price"],
+        "timestamp": data["usOut"],
+    }
 
-    Returns:
-        int: Текущее время в миллисекундах.
-
-    Raises:
-        requests.exceptions.HTTPError: Если запрос к API завершился неудачей.
-    """
-    url = "https://www.deribit.com/api/v2/public/get_time"
-    resp = requests.get(url)
-    resp.raise_for_status()
-    return resp.json()["result"]
+    return result

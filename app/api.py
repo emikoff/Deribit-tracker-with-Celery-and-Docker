@@ -16,13 +16,13 @@ def get_prices(ticker: str = Query(...)):
     Получает полную историю цен для указанного тикера.
 
     Args:
-        ticker (str): Символ торговой пары.
+        \n\tticker (str): Символ торговой пары (btc_usd или eth_usd).
 
     Returns:
-        List[Dict]: Список всех записей о ценах из базы данных.
+        \n\tList[Dict]: Список всех записей о ценах из базы данных.
 
     Raises:
-        HTTPException: 404 ошибка, если данных по тикеру не найдено.
+        \n\tHTTPException: 404 ошибка, если данных по тикеру не найдено.
     """
     data = fetch_prices_by_ticker(ticker)
     if not data:
@@ -36,13 +36,13 @@ def get_latest_price(ticker: str = Query(...)):
     Получает самую свежую (последнюю) цену для указанного тикера.
 
     Args:
-        ticker (str): Символ торговой пары.
+        \n\tticker (str): Символ торговой пары (btc_usd или eth_usd).
 
     Returns:
-        Dict: Последняя запись цены с временной меткой.
+        \n\tDict: Последняя запись цены с временной меткой.
 
     Raises:
-        HTTPException: 404 ошибка, если тикер не найден в БД.
+        \n\tHTTPException: 404 ошибка, если тикер не найден в БД.
     """
     data = fetch_latest_price(ticker)
     if data is None:
@@ -60,16 +60,16 @@ def get_prices_by_date(
     Получает историю цен в заданном временном диапазоне.
 
     Args:
-        ticker (str): Символ торговой пары.
-        from_ts (int): Начальный таймстамп.
-        to_ts (int): Конечный таймстамп.
+        \n\tticker (str): Символ торговой пары (btc_usd или eth_usd).
+        \n\tfrom_ts (int): Начальный таймстамп (1767225600000000 - 01.01.2026).
+        \n\tto_ts (int): Конечный таймстамп (1798761599000000 - 31.12.2026).
 
     Returns:
-        List[Dict]: Список цен, отсортированный по времени.
+        \n\tList[Dict]: Список цен, отсортированный по времени.
 
     Raises:
-        HTTPException: 400 ошибка при некорректном интервале времени.
-        HTTPException: 404 ошибка, если за этот период нет данных.
+        \n\tHTTPException: 400 ошибка при некорректном интервале времени.
+        \n\tHTTPException: 404 ошибка, если за этот период нет данных.
     """
     if from_ts > to_ts:
         raise HTTPException(status_code=400, detail="Invalid date range")

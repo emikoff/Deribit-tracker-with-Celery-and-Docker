@@ -66,7 +66,7 @@ TICKERS="btc_usd, eth_usd"
 
 * **Все данные**: `GET /prices?ticker=btc_usd`
 * **Последняя цена**: `GET /prices/latest?ticker=btc_usd`
-* **Фильтр по дате**: `GET /prices/by-date?ticker=btc_usd&from_ts=1735689600000&to_ts=1767225599000`
+* **Фильтр по дате**: `GET /prices/by-date?ticker=btc_usd&from_ts=1735689600000000&to_ts=1767225599000000`
 
 ## Тестирование API (cURL)
 
@@ -82,9 +82,9 @@ curl "http://localhost:8000/prices/latest?ticker=btc_usd"
 curl "http://localhost:8000/prices/latest?ticker=eth_usd"
 
 # Фильтрация по дате (пример для 2026 года)
-curl "http://localhost:8000/prices/by-date?ticker=btc_usd&from_ts=1735689600000&to_ts=1767225599000"
-curl "http://localhost:8000/prices/by-date?ticker=eth_usd&from_ts=1735689600000&to_ts=1767225599000"
+curl "http://localhost:8000/prices/by-date?ticker=btc_usd&from_ts=1767225600000000&to_ts=1798761599000000"
+curl "http://localhost:8000/prices/by-date?ticker=eth_usd&from_ts=1767225600000000&to_ts=1798761599000000"
 
 ```
 
-> **Важно:** Параметры `from_ts` и `to_ts` передаются в миллисекундах (13 знаков). В примерах выше указан диапазон на весь 2026 год.
+> **Важно:** Параметры `from_ts` и `to_ts` передаются в микросекундах (16 знаков). В примерах выше указан диапазон на весь 2026 год.
