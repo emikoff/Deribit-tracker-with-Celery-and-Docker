@@ -15,7 +15,6 @@ postgres_data/
 # IDE
 .vscode/
 .idea/
-CLAUDE.md
 celerybeat-schedule
 pytest.ini
 tempCodeRunnerFile.py
